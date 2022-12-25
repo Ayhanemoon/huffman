@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #str {
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea cols="50" rows="10" id="str" ></textarea><br>
+    <button onclick="draw()">convert</button><br />
+    <button style="margin-top: 10px" onclick="download()">download</button
+    ><br />
+    <canvas style="margin: 30px" id="matrix"></canvas><br />
+    <!-- <img id="img" alt="huffman"> -->
+    <script src="./huffman.js"></script>
+    <script>
+
+      let canvas = document.getElementById("matrix");
+
+      let draw = () => {
+        let colors = ["#F0A500", "#334756"];
+        let str = document.getElementById("str").value;
+        
+        let config = {
+            text: str,
+            canvas: canvas,
+            random: false,
+            colors: colors,
+            mode: 'draw'
+        };
+        
+        let huffman1 = new huffman(config);
+        console.log(huffman1);
+      };
+
+      let download = () => {
+        return huffman.download(canvas);
+      };
+    </script>
+  </body>
+</html>

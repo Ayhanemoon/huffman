@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comments</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+</head>
+<body>
+    <summary style="overflow:auto;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas assumenda quibusdam ipsum at nisi cum alias cupiditate mollitia magnam animi totam repellendus sint soluta, unde exercitationem deserunt consectetur eveniet vero!</summary>
+  <div id="app">
+    <rating />
+  </div>
+  <script>
+    // Write your code here
+    var rating = Vue.component('rating',{
+      data: function(){
+        return{
+          s1: false,
+          s2: false,
+          s3: false,
+          s4: false,
+          s5: false
+        }
+          
+      },
+      template: '<span v-on:click="s1 = !s1" v-bind:class="{active: s1  == true || s2  == true || s3  == true || s4  == true || s5  == true}">*</span><span v-on:click="s2 = !s2" v-bind:class="{active: s2  == true || s3  == true || s4  == true || s5  == true}">*</span><span v-on:click="s3 = !s3" v-bind:class="{active: s3  == true || s4  == true || s5  == true}">*</span><span v-on:click="s4 = !s4" v-bind:class="{active: s4  == true || s5  == true}">*</span><span v-on:click="s5 = !s5" v-bind:class="{active: s5  == true}">*</span>'
+    });
+    var vm = new Vue({
+      el: '#app',
+      components: {
+        rating
+      }
+    });
+    
+    // Example case
+    let span = document.getElementsByTagName("span")[2];
+    if(span) {
+      span.click();
+    }
+    setTimeout(() => console.log(document.getElementById("app").innerHTML));  
+  </script>
+</body>
+</html>
